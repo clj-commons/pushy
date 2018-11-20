@@ -1,11 +1,10 @@
 # pushy
-[![Build Status](https://travis-ci.org/kibu-australia/pushy.svg?branch=master)](https://travis-ci.org/kibu-australia/pushy)
 
-A Clojurescript library for quick and easy HTML5 pushState.
+A Clojurescript library for quick and easy HTML5 pushState. Fork of [the original](https://github.com/kibu-australia/pushy) which seems to no longer maintained.
 
 ## Install
 
-[![Clojars Project](http://clojars.org/kibu/pushy/latest-version.svg)](http://clojars.org/kibu/pushy)
+[![Clojars Project](https://img.shields.io/clojars/v/lifecheq/pushy.svg)](https://clojars.org/lifecheq/pushy)
 
 ## Usage
 
