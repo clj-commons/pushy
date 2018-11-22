@@ -1,4 +1,4 @@
-(defproject lifecheq/pushy "0.3.9"
+(defproject lifecheq/pushy "0.3.10-SNAPSHOT"
   :description "HTML5 pushState for Clojurescript"
   :url "https://github.com/lifecheq/pushy"
   :license {:name "Eclipse Public License"
@@ -7,11 +7,8 @@
   :dependencies [[org.clojure/clojure "1.8.0" :scope "provided"]
                  [org.clojure/clojurescript "1.9.494" :scope "provided"]]
 
-  :aliases {"deploy" ["do" "clean," "deploy" "clojars"]
-            "test"   ["do" "clean," "doo" "phantom" "test" "once"]}
+  :aliases {"test"   ["do" "clean," "doo" "phantom" "test" "once"]}
 
-  :lein-release {:deploy-via :shell
-                 :shell      ["lein" "deploy"]}
 
   :deploy-repositories [["releases"  {:sign-releases false :url "https://clojars.org/repo"}]
                         ["snapshots" {:sign-releases false :url "https://clojars.org/repo"}]]
