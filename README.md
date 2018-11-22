@@ -1,5 +1,7 @@
 # pushy
 
+[![Build Status](https://travis-ci.org/lifecheq/pushy.svg?branch=master)](https://travis-ci.org/lifecheq/pushy)
+
 A Clojurescript library for quick and easy HTML5 pushState. Fork of [the original](https://github.com/kibu-australia/pushy) which seems to no longer maintained.
 
 ## Install
