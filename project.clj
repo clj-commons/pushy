@@ -16,6 +16,15 @@
   :deploy-repositories [["releases"  {:sign-releases false :url "https://clojars.org/repo"}]
                         ["snapshots" {:sign-releases false :url "https://clojars.org/repo"}]]
 
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag" "v" "--no-sign"]
+                  ["deploy"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]]
+
   :source-paths ["src"]
 
   :profiles {:dev {:dependencies [[secretary "1.2.3"]]
