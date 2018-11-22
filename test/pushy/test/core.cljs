@@ -1,11 +1,9 @@
 (ns pushy.test.core
-  (:require-macros
-   [cemerick.cljs.test :refer (is deftest done use-fixtures)])
   (:require
+   [clojure.test :refer [deftest is async] :as test]
    [pushy.core :as pushy]
    [secretary.core :as secretary :refer-macros [defroute]]
-   [goog.events :as events]
-   [cemerick.cljs.test :as t])
+   [goog.events :as events])
   (:import goog.history.Html5History))
 
 (secretary/set-config! :prefix "/")
@@ -32,25 +30,27 @@
   (is (pushy/supported?)))
 
 ;; event listeners started = dispatch
-(deftest ^:async push-state-foo-route
-  (reset! test-val false)
-  (pushy/start! history)
-  (pushy/replace-token! history "/foo")
-  (js/setTimeout
-   (fn []
-     (is @test-val)
-     (is (nil? (pushy/stop! history)))
-     (is (= "/foo" (pushy/get-token history)))
-     (done))
-   5000))
+(deftest push-state-foo-route
+  (async done
+         (reset! test-val false)
+         (pushy/start! history)
+         (pushy/replace-token! history "/foo")
+         (js/setTimeout
+          (fn []
+            (is @test-val)
+            (is (nil? (pushy/stop! history)))
+            (is (= "/foo" (pushy/get-token history)))
+            (done))
+          5000)))
 
 ;; no event listeners started = no dispatch
-(deftest ^:async push-state-bar-route
-  (reset! test-val false)
-  (pushy/replace-token! history "/bar")
-  (js/setTimeout
-   (fn []
-     (is (false? @test-val))
-     (is (= "/bar" (pushy/get-token history)))
-     (done))
-   5000))
+(deftest push-state-bar-route
+  (async done
+         (reset! test-val false)
+         (pushy/replace-token! history "/bar")
+         (js/setTimeout
+          (fn []
+            (is (false? @test-val))
+            (is (= "/bar" (pushy/get-token history)))
+            (done))
+          5000)))

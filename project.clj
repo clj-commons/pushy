@@ -8,7 +8,7 @@
                  [org.clojure/clojurescript "1.9.494" :scope "provided"]]
 
   :aliases {"deploy" ["do" "clean," "deploy" "clojars"]
-            "test"   ["do" "clean," "with-profile" "dev" "cljsbuild" "test"]}
+            "test"   ["do" "clean," "doo" "phantom" "test" "once"]}
 
   :lein-release {:deploy-via :shell
                  :shell      ["lein" "deploy"]}
@@ -18,9 +18,9 @@
 
   :source-paths ["src"]
 
-  :profiles {:dev {:dependencies [[secretary "1.2.1"]]
-                   :plugins      [[lein-cljsbuild "1.1.5"]
-                                  [com.cemerick/clojurescript.test "0.3.3"]]
+  :profiles {:dev {:dependencies [[secretary "1.2.3"]]
+                   :plugins      [[lein-cljsbuild "1.1.7"]
+                                  [lein-doo "0.1.10"]]
 
                    :cljsbuild
                    {:test-commands
@@ -29,5 +29,6 @@
                     :builds
                     {:test {:source-paths ["src" "test"]
                             :compiler     {:output-to     "target/unit-test.js"
+                                           :main          pushy.test.runner
                                            :optimizations :whitespace
                                            :pretty-print  true}}}}}})
