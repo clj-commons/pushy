@@ -58,6 +58,10 @@
       (seq query) (str "?" query)
       (seq fragment) (str "#" fragment))))
 
+(defn- valid-link? [el]
+  (and (some #(= (.-tagName el) %) ["A" "AREA"])
+       (.hasAttribute el "href")))
+
 (defn pushy
   "Takes in three functions:
     * dispatch-fn: the function that dispatches when a match is found
@@ -102,7 +106,7 @@
         (swap! event-keys conj
                (on-click
                 (fn [e]
-                  (when-let [el (some-> e .-target (dom/getAncestorByTagNameAndClass "a" nil nil))]
+                  (when-let [el (some-> e .-target (dom/getAncestor valid-link? true))]
                     (let [uri (.parse Uri (.-href el))]
                       ;; Proceed if `identity-fn` returns a value and
                       ;; the user did not trigger the event via one of the
