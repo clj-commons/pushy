@@ -59,7 +59,7 @@
       (seq fragment) (str "#" fragment))))
 
 (defn- valid-link? [el]
-  (and (some #(= (.-tagName el) %) ["A" "AREA"])
+  (and (#{"A" "AREA"} (.-tagName el))
        (.hasAttribute el "href")))
 
 (defn pushy
