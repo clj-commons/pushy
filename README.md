@@ -1,12 +1,12 @@
 # pushy
 
-[![Build Status](https://travis-ci.org/lifecheq/pushy.svg?branch=master)](https://travis-ci.org/lifecheq/pushy)
+[![Build Status](https://travis-ci.org/clj-commons/pushy.svg?branch=master)](https://travis-ci.org/clj-commons/pushy)
 
-A Clojurescript library for quick and easy HTML5 pushState. Fork of [the original](https://github.com/kibu-australia/pushy) which seems to no longer maintained.
+A Clojurescript library for quick and easy HTML5 pushState. Fork of [the original](https://github.com/kibu-australia/pushy) which is no longer maintained.
 
 ## Install
 
-[![Clojars Project](https://img.shields.io/clojars/v/lifecheq/pushy.svg)](https://clojars.org/lifecheq/pushy)
+[![Clojars Project](https://img.shields.io/clojars/v/clj-commons/pushy.svg)](https://clojars.org/clj-commons/pushy)
 
 ## Usage
 
