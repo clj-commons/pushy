@@ -1,4 +1,4 @@
-(defproject clj-commons/pushy "0.3.10"
+(defproject clj-commons/pushy "0.3.11-SNAPSHOT"
   :description "HTML5 pushState for Clojurescript"
   :url "https://github.com/clj-commons/pushy"
   :license {:name "Eclipse Public License"
