@@ -1,6 +1,6 @@
-(defproject lifecheq/pushy "0.3.10-SNAPSHOT"
+(defproject clj-commons/pushy "0.3.10-SNAPSHOT"
   :description "HTML5 pushState for Clojurescript"
-  :url "https://github.com/lifecheq/pushy"
+  :url "https://github.com/clj-commons/pushy"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
