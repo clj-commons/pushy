@@ -149,6 +149,26 @@ pushy should work with any routing library:
 (pushy/start! history)
 ```
 
+[Reitit](https://github.com/metosin/reitit)
+```clojure
+(ns foo.core
+  (:require [reitit.core :as r]
+            [pushy.core :as pushy]))
+
+(def routes
+  [["/" {:page :index
+         :name :index}]])
+
+(def router (r/router routes))
+
+(def history
+  (pushy/pushy
+    (fn [match] (prn match))
+    (fn [uri] (r/match-by-path router uri))))
+
+(pushy/start! history)
+```
+
 ### URL handling
 
 By default pushy will dispatch on all relative URLs and absolute URLs that match the window's origin. This means that all external links will be bypassed.
