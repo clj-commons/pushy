@@ -1,9 +1,0 @@
-language: clojure
-sudo: required
-dist: trusty
-jdk:
-  - oraclejdk8
-before_install:
-  - npm install -g karma karma-cli karma-chrome-launcher  karma-cljs-test
-script:
-  - lein test
