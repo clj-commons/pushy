@@ -32,7 +32,7 @@ jobs:
             - v1-dependencies-
 
       - run: lein deps
-
+      - run: npm install -g karma karma-cli karma-chrome-launcher  karma-cljs-test
       - save_cache:
           paths:
             - ~/.m2
