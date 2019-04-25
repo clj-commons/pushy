@@ -1,6 +1,6 @@
 # pushy
 
-[![Build Status](https://travis-ci.org/clj-commons/pushy.svg?branch=master)](https://travis-ci.org/clj-commons/pushy)
+[![CircleCI](https://circleci.com/gh/clj-commons/pushy.svg?style=svg)](https://circleci.com/gh/clj-commons/pushy)
 
 A Clojurescript library for quick and easy HTML5 pushState. Fork of [the original](https://github.com/kibu-australia/pushy) which is no longer maintained.
 
