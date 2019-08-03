@@ -1,14 +1,9 @@
 # pushy
-
+[![Clojars Project](https://img.shields.io/clojars/v/clj-commons/pushy.svg)](https://clojars.org/clj-commons/pushy)
+[![cljdoc badge](https://cljdoc.org/badge/clj-commons/pushy)](https://cljdoc.org/d/clj-commons/pushy/CURRENT)
 [![CircleCI](https://circleci.com/gh/clj-commons/pushy.svg?style=svg)](https://circleci.com/gh/clj-commons/pushy)
 
 A Clojurescript library for quick and easy HTML5 pushState. Fork of [the original](https://github.com/kibu-australia/pushy) which is no longer maintained.
-
-## Install
-
-[![Clojars Project](https://img.shields.io/clojars/v/clj-commons/pushy.svg)](https://clojars.org/clj-commons/pushy)
-
-## Usage
 
 ### Setup
 
