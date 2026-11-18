@@ -123,7 +123,9 @@
                                  (or (not (.hasAttribute el "data-pushy-ignore"))
                                      (= (.getAttribute el "data-pushy-ignore") "false"))
                                  ;; Only dispatch on left button click
-                                 (= 0 (.-button e)))
+                                 (= 0 (.-button e))
+                                 ;; Bypass if is meant to be editable
+                                 (not (.-isContentEditable el)))
                         (let [next-token (get-token-from-uri uri)]
                           (if (identity-fn (match-fn next-token))
                             ;; Dispatch!
