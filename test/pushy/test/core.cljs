@@ -100,6 +100,15 @@
       (is (= ["/click-b"] @dispatched))
       (is (= "/click-b" (pushy/get-token h))))))
 
+;; set-token! skips an unchanged token; replace-token! always dispatches
+(deftest replace-token-dispatches-for-current-token
+  (with-click-history "/click-same" {}
+    (fn [h dispatched _]
+      (pushy/set-token! h "/click-same")
+      (is (= [] @dispatched))
+      (pushy/replace-token! h "/click-same")
+      (is (= ["/click-same"] @dispatched)))))
+
 ;; default: clicking a link to the current URL does nothing
 (deftest click-to-same-token-does-nothing-by-default
   (with-click-history "/click-same" {}

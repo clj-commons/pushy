@@ -199,6 +199,8 @@ Example:
 
 Likewise, you can call `replace-token!` which will also call the `dispatch` fn and replace the current history state without affecting the rest of the history stack.
 
+Calling `set-token!` with the current token does nothing, so `dispatch` is not called. To run `dispatch` again for the current URL, call `replace-token!` with the current token.
+
 ## License
 
 Copyright © 2017
