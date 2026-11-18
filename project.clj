@@ -4,10 +4,10 @@
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.8.0" :scope "provided"]
-                 [org.clojure/clojurescript "1.9.494" :scope "provided"]]
+  :dependencies [[org.clojure/clojure "1.11.1" :scope "provided"]
+                 [org.clojure/clojurescript "1.11.132" :scope "provided"]]
 
-  :aliases {"test"   ["do" "clean," "doo" "phantom" "test" "once"]}
+  :aliases {"test"   ["do" "clean," "doo" "chrome-headless" "test" "once"]}
 
 
   :deploy-repositories [["releases"  {:sign-releases false :url "https://clojars.org/repo"}]
@@ -23,6 +23,8 @@
                   ["vcs" "push"]]
 
   :source-paths ["src"]
+
+  :doo {:paths {:karma "./node_modules/karma/bin/karma"}}
 
   :profiles {:dev {:dependencies [[secretary "1.2.3"]]
                    :plugins      [[lein-cljsbuild "1.1.7"]
