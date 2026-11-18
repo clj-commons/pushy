@@ -1,0 +1,10 @@
+{
+  "name": "pushy-test",
+  "private": true,
+  "description": "Test-only tooling: karma runs the ClojureScript tests via lein-doo",
+  "devDependencies": {
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-cljs-test": "^0.1.0"
+  }
+}
