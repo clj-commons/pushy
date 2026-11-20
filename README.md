@@ -170,6 +170,20 @@ By default pushy will dispatch on all relative URLs and absolute URLs that match
 
 It is possible to specify which URLs are processable to pushy by specifying a custom predicate function `:processable-url?` in the constructor. This function is passed a single argument which is an instance of `goog.URI`.
 
+### Clicks on links to the current URL
+
+By default, clicking a link that points at the current URL does nothing: the URL has not changed, so `dispatch` is not called.
+
+To react to those clicks (to close a menu or scroll to the top, for example), pass an `:on-same-token-click` function to the constructor. It is called with the same value `dispatch` would receive. No history entry is added.
+
+```clojure
+(def history
+  (pushy/pushy dispatch match
+               :on-same-token-click (fn [matched-route] (close-menu!))))
+```
+
+To dispatch again instead, pass your dispatch function: `:on-same-token-click dispatch`.
+
 ### goog.history.HTML5History methods
 
 You can set the history state manually by calling the `set-token!` method. This will call the `dispatch` fn on a successfully matched path.
@@ -184,6 +198,8 @@ Example:
 ```
 
 Likewise, you can call `replace-token!` which will also call the `dispatch` fn and replace the current history state without affecting the rest of the history stack.
+
+Calling `set-token!` with the current token does nothing, so `dispatch` is not called. To run `dispatch` again for the current URL, call `replace-token!` with the current token.
 
 ## License
 

@@ -66,9 +66,13 @@
   "Takes in three functions:
     * dispatch-fn: the function that dispatches when a match is found
     * match-fn: the function used to check if a particular route exists
-    * identity-fn: (optional) extract the route from value returned by match-fn"
+    * identity-fn: (optional) extract the route from value returned by match-fn
+    * on-same-token-click: (optional) called with the matched route when a
+      link to the current URL is clicked. By default such clicks do nothing.
+      No history entry is added."
   [dispatch-fn match-fn &
-   {:keys [processable-url? identity-fn prevent-default-when-no-match?]
+   {:keys [processable-url? identity-fn prevent-default-when-no-match?
+           on-same-token-click]
     :or   {processable-url?               processable-url?
            identity-fn                    identity
            prevent-default-when-no-match? (constantly false)}}]
@@ -127,12 +131,18 @@
                                  ;; Bypass if is meant to be editable
                                  (not (.-isContentEditable el)))
                         (let [next-token (get-token-from-uri uri)]
-                          (if (identity-fn (match-fn next-token))
+                          (if-let [match (identity-fn (match-fn next-token))]
                             ;; Dispatch!
                             (do
-                              (if-let [title (-> el .-title)]
-                                (set-token! this next-token title)
-                                (set-token! this next-token))
+                              (if (and on-same-token-click
+                                       (= next-token (get-token this)))
+                                ;; `set-token!` is a no-op when the token is
+                                ;; unchanged, so `dispatch-fn` will not run;
+                                ;; let the caller decide what to do instead
+                                (on-same-token-click match)
+                                (if-let [title (-> el .-title)]
+                                  (set-token! this next-token title)
+                                  (set-token! this next-token)))
                               (.preventDefault e))
 
                             (when (prevent-default-when-no-match? next-token)
