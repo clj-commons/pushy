@@ -170,6 +170,14 @@ By default pushy will dispatch on all relative URLs and absolute URLs that match
 
 It is possible to specify which URLs are processable to pushy by specifying a custom predicate function `:processable-url?` in the constructor. This function is passed a single argument which is an instance of `goog.URI`.
 
+### URL fragments
+
+The token passed to `match` includes the fragment, for example `"/docs#install"`. If your routing library does not expect one, strip it before matching, or such URLs will not match.
+
+When pushy handles a click, the browser does not scroll to the element the fragment names, even for links within the current page such as `<a href="#install">`. Either scroll in your `dispatch` fn, or add a `data-pushy-ignore` attribute to the link to leave it to the browser.
+
+Hash-based routing, where the route itself lives in the fragment (`/#/docs`), is not supported.
+
 ### Clicks on links to the current URL
 
 By default, clicking a link that points at the current URL does nothing: the URL has not changed, so `dispatch` is not called.
